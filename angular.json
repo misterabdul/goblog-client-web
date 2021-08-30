@@ -98,9 +98,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "goblog-client-web"
+  "defaultProject": "goblog-client-web",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
