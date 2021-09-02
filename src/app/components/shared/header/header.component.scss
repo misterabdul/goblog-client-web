@@ -1,0 +1,14 @@
+@use '../../../../styles/constants';
+
+mat-toolbar {
+  padding-left: constants.$content-sides-width;
+  padding-right: constants.$content-sides-width;
+}
+
+button {
+  text-transform: uppercase;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

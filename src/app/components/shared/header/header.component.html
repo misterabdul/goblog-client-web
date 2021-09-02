@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <button mat-button>
+    <mat-icon>home</mat-icon>
+  </button>
+  <div class="spacer"></div>
+  <button mat-icon-button (click)="toggleDarkMode()">
+    <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-toolbar>
