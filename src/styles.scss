@@ -1,6 +1,7 @@
 @use '~@angular/material' as mat;
 
 @use './styles/general';
+@use './styles/markdowns';
 
 $roboto-font-path: "~roboto-fontface/fonts" !default;
 @import "~roboto-fontface/css/roboto/sass/roboto-fontface";

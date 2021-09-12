@@ -1,10 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
+import { markedOptionsFactory } from './configs/marked-options';
 import { PageModule } from './pages/pages.module';
 
 @Component({
@@ -21,6 +22,10 @@ class AppComponent {}
     BrowserAnimationsModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
+      markedOptions: {
+        provide: MarkedOptions,
+        useFactory: markedOptionsFactory,
+      },
     }),
     AppRoutingModule,
     PageModule,

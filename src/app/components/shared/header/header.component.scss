@@ -12,3 +12,17 @@ button {
 .spacer {
   flex: 1 1 auto;
 }
+
+@media (max-width: constants.$small-breakpoint-width) {
+  mat-toolbar {
+    padding-left: constants.$content-sides-width-sm;
+    padding-right: constants.$content-sides-width-sm;
+  }
+}
+
+@media (max-width: constants.$extra-small-breakpoint-width) {
+  mat-toolbar {
+    padding-left: unset;
+    padding-right: unset;
+  }
+}

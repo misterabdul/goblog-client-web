@@ -1,1 +1,11 @@
-<markdown [src]="src">{{ content }}</markdown>
+<markdown
+  [class]="isDarkMode ? 'dark-mode' : ''"
+  [src]="src"
+  lineNumbers
+  lineHighlight
+  emoji
+  katex
+  ngPreserveWhitespace
+>
+  {{ content }}
+</markdown>
