@@ -5,6 +5,11 @@ mat-toolbar {
   padding-right: constants.$content-sides-width;
 }
 
+mat-toolbar.dark-mode {
+  background: #37474f;
+  background-color: #37474f;
+}
+
 button {
   text-transform: uppercase;
 }

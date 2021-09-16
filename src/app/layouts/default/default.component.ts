@@ -12,7 +12,7 @@ export class LayoutDefaultComponent {
   constructor(darkmodeService: DarkModeService) {
     this.isDarkMode = false;
 
-    darkmodeService.readDarkMode().subscribe((isDarkMode) => {
+    darkmodeService.darkModeSubject.subscribe((isDarkMode) => {
       this.isDarkMode = isDarkMode;
     });
   }

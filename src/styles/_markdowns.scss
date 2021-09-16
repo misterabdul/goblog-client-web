@@ -11,6 +11,10 @@
   font-weight: 550;
 }
 
+.md-link-dark {
+  color: #dfdfdf;
+}
+
 .md-h1 {
   font-size: 38px !important;
   margin-bottom: 15px !important;
@@ -67,11 +71,26 @@
 
 .md-img {
   object-fit: contain;
-  width: 100%;
-  border-radius: 0.3em;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #212121;
   margin-bottom: 15px !important;
+}
+
+.md-img-dark {
+  border-color: #dfdfdf;
 }
 
 .md-pre {
   margin-bottom: 15px !important;
+  background-color: #212121 !important;
+}
+
+.md-pre-dark {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dfdfdf;
 }

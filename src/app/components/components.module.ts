@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownModule } from '@misterabdul/ngx-markdown';
 
 import { SharedHeaderComponent } from './shared/header/header.component';
 import { SharedContentMarkdownComponent } from './shared/content-markdown/content-markdown.component';

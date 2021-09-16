@@ -14,7 +14,7 @@ export class SharedHeaderComponent {
     this.darkModeService = darkModeService;
     this.isDarkMode = false;
 
-    this.darkModeService.readDarkMode().subscribe((isDarkMode: boolean) => {
+    this.darkModeService.darkModeSubject.subscribe((isDarkMode: boolean) => {
       this.isDarkMode = isDarkMode;
     });
   }
