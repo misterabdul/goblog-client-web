@@ -1,12 +1,17 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule, MarkedOptions } from '@misterabdul/ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
-import { markedOptionsFactory } from './configs/marked-options';
+import { markedOptionsFactory } from './configs/marked.config';
 import { PageModule } from './pages/pages.module';
+import { MsgPackInterceptor } from './utils/http.util';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +35,9 @@ class AppComponent {}
     AppRoutingModule,
     PageModule,
   ],
-  providers: [],
+  providers: [
+    [{ provide: HTTP_INTERCEPTORS, useClass: MsgPackInterceptor, multi: true }],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

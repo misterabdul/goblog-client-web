@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { DarkModeCookie } from '../utils/contants';
-import { CookieHelpers } from '../utils/cookie-helpers';
+import { DarkModeCookie } from '../configs/darkmode.config';
+import { CookieHelpers } from '../utils/cookie.util';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LayoutDefaultComponent } from 'src/app/layouts/layouts.module';
+
 import { HomeIndexComponent } from './index/index.component';
 import { MarkdownSampleComponent } from './markdown-sample/markdown-sample.component';
 

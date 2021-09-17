@@ -21,8 +21,8 @@ mat-sidenav-container > mat-sidenav-content {
 }
 
 mat-sidenav-container.dark-mode {
-  background: #212121;
-  background-color: #212121;
+  background: constants.$darkmode-background-color;
+  background-color: constants.$darkmode-background-color;
 }
 
 @media (max-width: constants.$small-breakpoint-width) {

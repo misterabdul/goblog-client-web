@@ -1,5 +1,5 @@
 import { MarkedOptions, MarkedRenderer } from '@misterabdul/ngx-markdown';
-import { MarkedRendererHelpers } from '../utils/marked-renderer-helpers';
+import { MarkedRendererHelpers } from '../utils/marked-renderer.util';
 
 export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();

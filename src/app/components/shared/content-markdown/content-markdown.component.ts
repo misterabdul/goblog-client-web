@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MarkdownService } from '@misterabdul/ngx-markdown';
 import { DarkModeService } from 'src/app/services/darkmode.service';
-import { MarkedRendererHelpers } from 'src/app/utils/marked-renderer-helpers';
+import { MarkedRendererHelpers } from 'src/app/utils/marked-renderer.util';
 
 @Component({
   selector: 'app-component-shared-content-markdown',
@@ -54,7 +54,6 @@ export class SharedContentMarkdownComponent {
 
   @Input()
   set content(value: string | undefined) {
-    console.log(value);
     if (!this.isSrcMode) {
       this._content = value;
       this._src = undefined;
