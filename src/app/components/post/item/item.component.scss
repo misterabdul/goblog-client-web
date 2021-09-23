@@ -29,9 +29,14 @@ mat-card-title {
 }
 
 mat-card > img {
-  max-height: 300px;
+  background-color: #e0e0e0;
+  height: 300px;
   object-fit: cover;
   object-position: top;
+}
+
+mat-card.dark-mode > img {
+  background-color: #404040;
 }
 
 mat-chip {
@@ -59,7 +64,7 @@ div.content-tags {
 }
 
 div.content-main {
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 p.content-description {

@@ -1,5 +1,5 @@
 <mat-card [class]="isDarkMode ? 'dark-mode' : ''" (click)="itemClick()">
-  <img mat-card-image src="{{ post?.featuringImagePath }}" />
+  <img mat-card-image src="{{ post?.featuringImagePath }}" loading="lazy" />
   <mat-card-header>
     <mat-card-title>{{ post?.title }}</mat-card-title>
   </mat-card-header>

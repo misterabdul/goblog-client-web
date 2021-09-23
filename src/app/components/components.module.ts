@@ -10,7 +10,9 @@ import { MarkdownModule } from '@misterabdul/ngx-markdown';
 
 import { SharedHeaderComponent } from './shared/header/header.component';
 import { SharedContentMarkdownComponent } from './shared/content-markdown/content-markdown.component';
+
 import { PostItemComponent } from './post/item/item.component';
+import { PostItemShimmerComponent } from './post/item-shimmer/item-shimmer.component';
 import { PostContentComponent } from './post/content/content.component';
 
 @NgModule({
@@ -18,6 +20,7 @@ import { PostContentComponent } from './post/content/content.component';
     SharedHeaderComponent,
     SharedContentMarkdownComponent,
     PostItemComponent,
+    PostItemShimmerComponent,
     PostContentComponent,
   ],
   imports: [
@@ -34,6 +37,7 @@ import { PostContentComponent } from './post/content/content.component';
     SharedHeaderComponent,
     SharedContentMarkdownComponent,
     PostItemComponent,
+    PostItemShimmerComponent,
     PostContentComponent,
   ],
 })
@@ -43,5 +47,6 @@ export {
   SharedHeaderComponent,
   SharedContentMarkdownComponent,
   PostItemComponent,
+  PostItemShimmerComponent,
   PostContentComponent,
 };

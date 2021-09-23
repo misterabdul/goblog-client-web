@@ -2,6 +2,7 @@
 
 @use "./styles/general";
 @use "./styles/markdowns";
+@use "./styles/shimmer";
 
 $roboto-font-path: "~roboto-fontface/fonts" !default;
 @import "~roboto-fontface/css/roboto/sass/roboto-fontface";
