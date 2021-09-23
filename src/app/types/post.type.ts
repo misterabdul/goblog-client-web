@@ -6,6 +6,8 @@ export default class Post implements ResponseMessage {
   public uid: string | undefined;
   public slug: string | undefined;
   public title: string | undefined;
+  public description: string | undefined;
+  public featuringImagePath: string | undefined;
   public content: string | undefined;
   public categories: Array<PostCategory> | undefined;
   public tags: Array<String> | undefined;

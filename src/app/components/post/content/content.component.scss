@@ -15,23 +15,8 @@ mat-card.dark-mode {
   background-color: #303030;
 }
 
-mat-card:hover {
-  cursor: pointer;
-}
-
-mat-card:hover mat-card-title {
-  text-decoration-line: underline;
-  text-decoration-thickness: 3px;
-}
-
 mat-card-title {
-  font-size: 2rem !important;
-}
-
-mat-card > img {
-  max-height: 300px;
-  object-fit: cover;
-  object-position: top;
+  font-size: 40px !important;
 }
 
 mat-chip {
@@ -55,14 +40,9 @@ mat-chip.dark-mode:hover {
 }
 
 div.content-tags {
-  margin-top: 3px;
+  margin-top: 7px;
 }
 
 div.content-main {
-  margin-top:10px;
-}
-
-p.content-description {
-  text-align: justify;
-  text-justify: inter-word;
+  margin-top: 30px;
 }

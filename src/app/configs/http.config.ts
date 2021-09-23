@@ -1,4 +1,4 @@
-import { HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 export default class HttpConfig {
   public static getDefaultOptions(headers: HttpHeaders | null = null) {

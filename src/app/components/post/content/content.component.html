@@ -1,4 +1,4 @@
-<mat-card [class]="isDarkMode ? 'dark-mode' : ''" (click)="itemClick()">
+<mat-card [class]="isDarkMode ? 'dark-mode' : ''">
   <img mat-card-image src="{{ post?.featuringImagePath }}" />
   <mat-card-header>
     <mat-card-title>{{ post?.title }}</mat-card-title>
@@ -15,7 +15,9 @@
       </mat-chip-list>
     </div>
     <div class="content-main">
-      <p class="content-description">{{ post?.description }}</p>
+      <app-component-shared-content-markdown
+        [content]="post?.content"
+      ></app-component-shared-content-markdown>
     </div>
   </mat-card-content>
 </mat-card>
