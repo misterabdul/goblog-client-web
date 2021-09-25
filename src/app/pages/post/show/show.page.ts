@@ -4,9 +4,9 @@ import { PostService } from 'src/app/services/post.service';
 import Post from 'src/app/types/post.type';
 
 @Component({
-  selector: 'app-show',
-  templateUrl: './show.component.html',
-  styleUrls: ['./show.component.css'],
+  selector: 'app-page-post-show',
+  templateUrl: './show.page.html',
+  styleUrls: ['./show.page.scss'],
 })
 export class PostShowComponent {
   private _post: Post | undefined;

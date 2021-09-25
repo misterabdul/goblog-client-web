@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  selector: 'app-page-home-index',
+  templateUrl: './index.page.html',
+  styleUrls: ['./index.page.css'],
 })
 export class HomeIndexComponent {
   public content = `# Simple Blog App\nThis is my simple blog web app. Frontend built with Angular.

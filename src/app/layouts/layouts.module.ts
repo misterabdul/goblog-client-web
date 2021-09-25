@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-import { LayoutDefaultComponent } from './default/default.component';
+import { LayoutDefaultComponent } from './default/default.layout';
 import { ComponentModule } from '../components/components.module';
 
 @NgModule({

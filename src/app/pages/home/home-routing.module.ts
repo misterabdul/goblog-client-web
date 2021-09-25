@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutDefaultComponent } from 'src/app/layouts/layouts.module';
 
-import { HomeIndexComponent } from './index/index.component';
-import { MarkdownSampleComponent } from './markdown-sample/markdown-sample.component';
+import { HomeIndexComponent } from './index/index.page';
+import { MarkdownSampleComponent } from './markdown-sample/markdown-sample.page';
 
 const routes: Routes = [
   {

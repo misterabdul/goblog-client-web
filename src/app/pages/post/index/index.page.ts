@@ -3,9 +3,9 @@ import { PostService } from 'src/app/services/post.service';
 import Post from 'src/app/types/post.type';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss'],
+  selector: 'app-page-post-index',
+  templateUrl: './index.page.html',
+  styleUrls: ['./index.page.scss'],
 })
 export class PostIndexComponent {
   private _posts: Array<Post>;

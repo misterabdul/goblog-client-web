@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { DarkModeService } from 'src/app/services/darkmode.service';
 
 @Component({
-  selector: 'app-default',
-  templateUrl: './default.component.html',
-  styleUrls: ['./default.component.scss'],
+  selector: 'app-layout-default',
+  templateUrl: './default.layout.html',
+  styleUrls: ['./default.layout.scss'],
 })
 export class LayoutDefaultComponent {
   public isDarkMode: boolean = false;

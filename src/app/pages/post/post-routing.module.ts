@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutDefaultComponent } from 'src/app/layouts/layouts.module';
 
-import { PostIndexComponent } from './index/index.component';
-import { PostShowComponent } from './show/show.component';
+import { PostIndexComponent } from './index/index.page';
+import { PostShowComponent } from './show/show.page';
 
 const routes: Routes = [
   {

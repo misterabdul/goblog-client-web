@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'],
+  selector: 'app-page-search',
+  templateUrl: './search.page.html',
+  styleUrls: ['./search.page.scss'],
 })
 export class SearchComponent {
   private _searchQuery: string | undefined;
