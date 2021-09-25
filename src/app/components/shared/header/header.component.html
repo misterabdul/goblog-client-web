@@ -6,11 +6,30 @@
   <a mat-button href="/">
     <mat-icon>home</mat-icon>
   </a>
-  <div class="spacer"></div>
+  <div class="spacer">
+    <div class="search-container">
+      <form class="search-form" method="get" action="/search">
+        <input
+          class="search-input"
+          type="text"
+          placeholder="Search"
+          name="q"
+        />
+        <button class="search-submit" type="submit" class="search-submit">
+          <span class="material-icons md-search-icon">search</span>
+        </button>
+      </form>
+    </div>
+  </div>
+  <a
+    class="nav-item"
+    mat-button
+    *ngFor="let item of navItems"
+    [href]="item.link"
+  >
+    {{ item.label }}
+  </a>
   <button mat-icon-button (click)="toggleDarkMode()">
     <mat-icon>{{ isDarkMode ? "light_mode" : "dark_mode" }}</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>search</mat-icon>
   </button>
 </mat-toolbar>

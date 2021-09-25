@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +29,7 @@ import { PostContentComponent } from './post/content/content.component';
     RouterModule,
     MarkdownModule.forChild(),
     MatToolbarModule,
+    MatFormFieldModule,
     MatCardModule,
     MatChipsModule,
     MatButtonModule,

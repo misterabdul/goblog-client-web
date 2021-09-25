@@ -7,19 +7,32 @@ import { DarkModeService } from 'src/app/services/darkmode.service';
   styleUrls: ['./header.component.scss'],
 })
 export class SharedHeaderComponent {
-  private darkModeService: DarkModeService;
-  public isDarkMode: boolean;
+  private _darkModeService: DarkModeService;
+  private _isDarkMode: boolean = false;
+  private _navItems: Array<Menu>;
 
   constructor(darkModeService: DarkModeService) {
-    this.darkModeService = darkModeService;
-    this.isDarkMode = false;
+    this._darkModeService = darkModeService;
+    this._navItems = [new Menu('posts', '/post')];
 
-    this.darkModeService.darkModeSubject.subscribe((isDarkMode: boolean) => {
-      this.isDarkMode = isDarkMode;
+    this._darkModeService.darkModeSubject.subscribe((isDarkMode: boolean) => {
+      this._isDarkMode = isDarkMode;
     });
   }
 
-  public toggleDarkMode() {
-    this.darkModeService.toggleDarkMode();
+  get isDarkMode(): boolean {
+    return this._isDarkMode;
   }
+
+  get navItems(): Array<Menu> {
+    return this._navItems;
+  }
+
+  public toggleDarkMode() {
+    this._darkModeService.toggleDarkMode();
+  }
+}
+
+class Menu {
+  constructor(public label: string, public link: string) {}
 }
