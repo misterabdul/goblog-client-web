@@ -23,7 +23,7 @@ button {
 
 .search-container {
   height: 100%;
-  width: 400px;
+  width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -38,7 +38,7 @@ button {
 .search-input {
   display: inline-block;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 50px);
   color: #fff;
   font-size: 0.9rem;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -67,7 +67,7 @@ button {
 .search-submit {
   display: inline-block;
   height: 100%;
-  width: calc(100%-50px);
+  width: 50px;
   padding: 2px 20px 0 15px;
   margin: 0;
   border: 0;
@@ -90,11 +90,26 @@ a.nav-item {
     padding-left: constants.$content-sides-width-sm;
     padding-right: constants.$content-sides-width-sm;
   }
+
+  .search-container {
+    width: unset;
+    flex: 1 1 auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 @media (max-width: constants.$extra-small-breakpoint-width) {
   mat-toolbar {
     padding-left: unset;
     padding-right: unset;
+  }
+
+  .btn-home {
+    margin-left: 10px;
+  }
+
+  .btn-menu {
+    margin-right: 10px;
   }
 }
