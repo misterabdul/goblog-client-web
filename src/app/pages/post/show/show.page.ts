@@ -8,7 +8,7 @@ import Post from 'src/app/types/post.type';
   templateUrl: './show.page.html',
   styleUrls: ['./show.page.scss'],
 })
-export class PostShowComponent {
+export class PostShowPage {
   private _post: Post | undefined;
 
   constructor(activateRoute: ActivatedRoute, postService: PostService) {

@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './markdown-sample.page.html',
   styleUrls: ['./markdown-sample.page.css'],
 })
-export class MarkdownSampleComponent {
+export class MarkdownSamplePage {
   constructor() {}
 }

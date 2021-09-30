@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchComponent {
+export class SearchPage {
   private _searchQuery: string | undefined;
 
   constructor(route: ActivatedRoute) {

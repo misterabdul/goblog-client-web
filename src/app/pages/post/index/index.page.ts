@@ -7,7 +7,7 @@ import Post from 'src/app/types/post.type';
   templateUrl: './index.page.html',
   styleUrls: ['./index.page.scss'],
 })
-export class PostIndexComponent {
+export class PostIndexPage {
   private _posts: Array<Post>;
 
   constructor(postService: PostService) {

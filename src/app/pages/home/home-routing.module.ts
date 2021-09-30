@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LayoutDefaultComponent } from 'src/app/layouts/layouts.module';
+import { DefaultLayout } from 'src/app/layouts/layouts.module';
 
-import { HomeIndexComponent } from './index/index.page';
-import { MarkdownSampleComponent } from './markdown-sample/markdown-sample.page';
+import { HomeIndexPage } from './index/index.page';
+import { MarkdownSamplePage } from './markdown-sample/markdown-sample.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutDefaultComponent,
-    children: [{ path: '', component: HomeIndexComponent }],
+    component: DefaultLayout,
+    children: [{ path: '', component: HomeIndexPage }],
   },
   {
     path: 'home',
-    component: LayoutDefaultComponent,
+    component: DefaultLayout,
     children: [
-      { path: '', component: HomeIndexComponent },
-      { path: 'markdown-sample', component: MarkdownSampleComponent },
+      { path: '', component: MarkdownSamplePage },
+      { path: 'markdown-sample', component: MarkdownSamplePage },
     ],
   },
 ];

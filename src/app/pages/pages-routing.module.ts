@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LayoutDefaultComponent } from 'src/app/layouts/layouts.module';
+import { DefaultLayout } from 'src/app/layouts/layouts.module';
 
-import { SearchComponent } from './search/search.page';
+import { SearchPage } from './search/search.page';
 
 const routes: Routes = [
   {
     path: 'search',
-    component: LayoutDefaultComponent,
+    component: DefaultLayout,
     children: [
-      { path: '', component: SearchComponent },
+      { path: '', component: SearchPage },
     ],
   },
 ];

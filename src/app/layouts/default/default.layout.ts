@@ -6,7 +6,7 @@ import { DarkModeService } from 'src/app/services/darkmode.service';
   templateUrl: './default.layout.html',
   styleUrls: ['./default.layout.scss'],
 })
-export class LayoutDefaultComponent {
+export class DefaultLayout {
   public isDarkMode: boolean = false;
 
   constructor(darkmodeService: DarkModeService) {
