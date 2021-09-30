@@ -9,16 +9,26 @@ import Post from 'src/app/types/post.type';
 })
 export class PostIndexPage {
   private _posts: Array<Post>;
+  private _isLoading: boolean;
 
   constructor(postService: PostService) {
     this._posts = new Array();
+    this._isLoading = true;
 
-    postService.getPosts().subscribe((response) => {
-      this._posts = response?.data ?? this._posts;
-    });
+    postService.getPosts().subscribe(
+      (response) => {
+        this._posts = response?.data ?? this._posts;
+        this._isLoading = false;
+      },
+      (error) => {}
+    );
   }
 
   get posts(): Array<Post> {
     return this._posts;
+  }
+
+  get isLoading(): boolean {
+    return this._isLoading;
   }
 }

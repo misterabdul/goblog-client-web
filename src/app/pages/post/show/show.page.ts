@@ -14,9 +14,12 @@ export class PostShowPage {
   constructor(activateRoute: ActivatedRoute, postService: PostService) {
     activateRoute.params.subscribe((params) => {
       if (typeof params['id'] === 'string')
-        postService.getPost(params['id']).subscribe((response) => {
-          this._post = response;
-        });
+        postService.getPost(params['id']).subscribe(
+          (response) => {
+            this._post = response;
+          },
+          (error) => {}
+        );
     });
   }
 

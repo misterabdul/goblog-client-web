@@ -18,6 +18,13 @@ export class PostService {
     );
   }
 
+  public searchPosts(query: string) {
+    return this._http.get<Response<Array<Post>>>(
+      URL.searchPosts + '?q=' + query,
+      HttpConfig.getDefaultOptions()
+    );
+  }
+
   public getPost(id: string) {
     return this._http.get<Post>(
       URL.post + '/' + id,
