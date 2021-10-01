@@ -3,14 +3,20 @@
   class="mat-elevation-z6"
   [class]="isDarkMode ? 'dark-mode' : ''"
 >
-  <a mat-icon-button class="btn-home" href="/">
+  <a mat-icon-button class="btn-home" routerLink="/">
     <mat-icon>home</mat-icon>
   </a>
   <div class="spacer">
     <div class="search-container">
-      <form class="search-form" method="get" action="/search">
-        <input class="search-input" type="text" placeholder="Search" name="q" />
-        <button class="search-submit" type="submit" class="search-submit">
+      <form class="search-form" (ngSubmit)="doSearch()">
+        <input
+          class="search-input"
+          type="text"
+          placeholder="Search"
+          name="q"
+          [(ngModel)]="searchQuery"
+        />
+        <button class="search-submit" matRipple type="submit">
           <span class="material-icons md-search-icon">search</span>
         </button>
       </form>
@@ -19,12 +25,16 @@
   <button class="btn-menu" mat-icon-button [matMenuTriggerFor]="navMenuMobile">
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #navMenuMobile="matMenu" xPosition="before">
+  <mat-menu
+    #navMenuMobile="matMenu"
+    xPosition="before"
+    [class]="isDarkMode ? 'dark-mode' : ''"
+  >
     <a
       class="nav-item"
       mat-menu-item
       *ngFor="let item of navItems"
-      [href]="item.link"
+      [routerLink]="item.link"
     >
       {{ item.label }}
     </a>

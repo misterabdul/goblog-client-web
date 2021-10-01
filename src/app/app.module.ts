@@ -4,6 +4,7 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule, MarkedOptions } from '@misterabdul/ngx-markdown';
@@ -25,6 +26,8 @@ class AppComponent {}
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       markedOptions: {

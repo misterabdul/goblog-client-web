@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DarkModeService } from 'src/app/services/darkmode.service';
 
 @Component({
@@ -8,13 +9,23 @@ import { DarkModeService } from 'src/app/services/darkmode.service';
 })
 export class SharedHeaderComponent {
   private _darkModeService: DarkModeService;
+  private _router: Router;
   private _isDarkMode: boolean = false;
   private _navItems: Array<Menu>;
+  public searchQuery: string | undefined;
 
-  constructor(darkModeService: DarkModeService) {
-    this._darkModeService = darkModeService;
+  constructor(
+    route: ActivatedRoute,
+    router: Router,
+    darkModeService: DarkModeService
+  ) {
+    route.queryParams.subscribe((params) => {
+      this.searchQuery = params['q'];
+    });
+
+    this._router = router;
     this._navItems = [new Menu('posts', '/post')];
-
+    this._darkModeService = darkModeService;
     this._darkModeService.darkModeSubject.subscribe((isDarkMode: boolean) => {
       this._isDarkMode = isDarkMode;
     });
@@ -26,6 +37,11 @@ export class SharedHeaderComponent {
 
   get navItems(): Array<Menu> {
     return this._navItems;
+  }
+
+  public doSearch() {
+    if (this.searchQuery === undefined) this.searchQuery = '';
+    this._router.navigateByUrl('/search?q=' + this.searchQuery);
   }
 
   public toggleDarkMode() {

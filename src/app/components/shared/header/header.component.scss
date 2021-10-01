@@ -6,7 +6,6 @@ mat-toolbar {
 }
 
 mat-toolbar.dark-mode {
-  background: #37474f;
   background-color: #37474f;
 }
 
@@ -56,10 +55,11 @@ button {
 }
 
 .search-input::placeholder {
-  color: #fff;
+  color: rgba($color: #fff, $alpha: 0.3);
 }
 
-.search-input:focus {
+.search-input:focus,
+.search-input:focus-visible {
   outline: 0;
   border: 1px solid #fff;
 }

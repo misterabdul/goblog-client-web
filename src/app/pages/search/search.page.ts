@@ -30,6 +30,8 @@ export class SearchPage {
 
     route.queryParams.subscribe((params) => {
       this._searchQuery = params['q'];
+      this._posts = new Array();
+      this._isLoading = true;
       postService.searchPosts(this._searchQuery!).subscribe(
         (response) => {
           this._posts = response?.data ?? this._posts;
