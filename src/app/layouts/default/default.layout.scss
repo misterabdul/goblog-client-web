@@ -20,11 +20,6 @@ mat-sidenav-container > mat-sidenav-content {
   -webkit-overflow-scrolling: touch;
 }
 
-mat-sidenav-container.dark-mode {
-  background: constants.$darkmode-background-color;
-  background-color: constants.$darkmode-background-color;
-}
-
 @media (max-width: constants.$small-breakpoint-width) {
   mat-sidenav-container > mat-sidenav-content {
     margin-left: constants.$content-sides-width-sm;

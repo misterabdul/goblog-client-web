@@ -9,12 +9,6 @@ mat-card {
   margin-bottom: 10px;
 }
 
-mat-card.dark-mode {
-  color: constants.$darkmode-foreground-color;
-  border-color: rgba($color: #999999, $alpha: 0.5);
-  background-color: #303030;
-}
-
 mat-card:hover {
   cursor: pointer;
 }
@@ -35,10 +29,6 @@ mat-card > img {
   object-position: top;
 }
 
-mat-card.dark-mode > img {
-  background-color: #404040;
-}
-
 mat-chip {
   font-size: 0.7rem;
   font-weight: 400;
@@ -47,16 +37,6 @@ mat-chip {
   border-style: solid;
   border-width: 2px;
   margin-right: 4px !important;
-}
-
-mat-chip.dark-mode {
-  color: constants.$darkmode-foreground-color;
-  border-color: constants.$darkmode-foreground-color;
-}
-
-mat-chip.dark-mode:hover {
-  color: #303030;
-  background-color: constants.$darkmode-foreground-color !important;
 }
 
 div.content-tags {

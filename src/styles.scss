@@ -1,9 +1,12 @@
 @use "~@angular/material" as mat;
 
-@use "./styles/general";
-@use "./styles/markdowns";
-@use "./styles/shimmer";
-@use "./styles/others";
+@include mat.core();
+
+@import "./styles/themes";
+@import "./styles/general";
+@import "./styles/markdowns";
+@import "./styles/shimmer";
+@import "./styles/others";
 
 $roboto-font-path: "~roboto-fontface/fonts" !default;
 @import "~roboto-fontface/css/roboto/sass/roboto-fontface";
@@ -11,4 +14,3 @@ $roboto-font-path: "~roboto-fontface/fonts" !default;
 $material-icons-font-path: "~material-icons/iconfont/";
 @import "~material-icons/iconfont/material-icons";
 
-@include mat.core();

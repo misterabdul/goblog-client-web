@@ -6,6 +6,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,6 +38,7 @@ import { PostContentComponent } from './post/content/content.component';
     MatToolbarModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatInputModule,
     MatCardModule,
     MatChipsModule,
     MatButtonModule,

@@ -9,12 +9,6 @@ mat-card {
   margin-bottom: 10px;
 }
 
-mat-card.dark-mode {
-  color: constants.$darkmode-foreground-color;
-  border-color: rgba($color: #999999, $alpha: 0.5);
-  background-color: #303030;
-}
-
 mat-card-title {
   font-size: 40px !important;
 }
@@ -27,16 +21,6 @@ mat-chip {
   border-style: solid;
   border-width: 2px;
   margin-right: 4px !important;
-}
-
-mat-chip.dark-mode {
-  color: constants.$darkmode-foreground-color;
-  border-color: constants.$darkmode-foreground-color;
-}
-
-mat-chip.dark-mode:hover {
-  color: #303030;
-  background-color: constants.$darkmode-foreground-color !important;
 }
 
 div.content-tags {

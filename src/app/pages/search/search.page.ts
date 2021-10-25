@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DarkModeService } from 'src/app/services/darkmode.service';
 import { PostService } from 'src/app/services/post.service';
 import Post from 'src/app/types/post.type';
 
@@ -10,23 +9,13 @@ import Post from 'src/app/types/post.type';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage {
-  private _isDarkMode: boolean;
   private _posts: Array<Post>;
   private _isLoading: boolean;
   private _searchQuery: string | undefined;
 
-  constructor(
-    route: ActivatedRoute,
-    darkModeService: DarkModeService,
-    postService: PostService
-  ) {
-    this._isDarkMode = false;
+  constructor(route: ActivatedRoute, postService: PostService) {
     this._posts = new Array();
     this._isLoading = true;
-
-    darkModeService.darkModeSubject.subscribe((isDarkMode) => {
-      this._isDarkMode = isDarkMode;
-    });
 
     route.queryParams.subscribe((params) => {
       this._searchQuery = params['q'];
@@ -40,10 +29,6 @@ export class SearchPage {
         (error) => {}
       );
     });
-  }
-
-  get isDarkMode(): boolean {
-    return this._isDarkMode;
   }
 
   get posts(): Array<Post> {

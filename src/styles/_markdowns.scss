@@ -1,3 +1,22 @@
+@use "~@angular/material" as mat;
+
+$darkModeTextColor: mat.get-color-from-palette(
+  mat.$dark-theme-foreground-palette,
+  "text"
+);
+$darkModeSecondaryTextColor: mat.get-color-from-palette(
+  mat.$dark-theme-foreground-palette,
+  "secondary-text"
+);
+$darkModeDividerColor: mat.get-color-from-palette(
+  mat.$dark-theme-foreground-palette,
+  "divider"
+);
+$darkModeBackgroundColor: mat.get-color-from-palette(
+  mat.$dark-theme-background-palette,
+  "background"
+);
+
 .md-p {
   text-align: justify;
   text-justify: inter-word;
@@ -12,7 +31,7 @@
 }
 
 .md-link-dark {
-  color: #dfdfdf;
+  color: $darkModeSecondaryTextColor;
 }
 
 .md-h1 {

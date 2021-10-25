@@ -1,4 +1,4 @@
-<mat-card [class]="isDarkMode ? 'dark-mode' : ''">
+<mat-card>
   <img mat-card-image src="{{ post?.featuringImagePath }}" />
   <mat-card-header>
     <mat-card-title>{{ post?.title }}</mat-card-title>
@@ -8,7 +8,6 @@
       <mat-chip-list>
         <mat-chip
           *ngFor="let tag of post?.tags"
-          [class]="isDarkMode ? 'dark-mode' : ''"
         >
           {{ "#" + tag }}
         </mat-chip>
