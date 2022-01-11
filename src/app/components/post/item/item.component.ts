@@ -18,6 +18,11 @@ export class PostItemComponent {
     this._baseUrl = URL.baseUrl;
   }
 
+  public itemClick() {
+    if (this._post && this._post.slug)
+      this._router.navigateByUrl('/post/' + this._post.slug);
+  }
+
   get baseUrl(): string {
     return this._baseUrl;
   }
@@ -26,12 +31,13 @@ export class PostItemComponent {
   set post(value: Post) {
     this._post = value;
   }
+
   get post(): Post {
     return this._post!;
   }
 
-  public itemClick() {
-    if (this._post && this._post.slug)
-      this._router.navigateByUrl('/post/' + this._post.slug);
+  get hasFeatureImage(): boolean {
+    const featureImagePath = this._post?.featuringImagePath;
+    return typeof featureImagePath === 'string' && featureImagePath.length > 0;
   }
 }
