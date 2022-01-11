@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule, MarkedOptions } from '@misterabdul/ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
-import { markedOptionsFactory } from './configs/marked.config';
+import { MarkedConfig } from './configs/marked.config';
 import { PageModule } from './pages/pages.module';
 import { MsgPackInterceptor } from './utils/http.util';
 
@@ -32,7 +32,7 @@ class AppComponent {}
       loader: HttpClient,
       markedOptions: {
         provide: MarkedOptions,
-        useFactory: markedOptionsFactory,
+        useFactory: MarkedConfig.optionsFactory,
       },
     }),
     AppRoutingModule,
