@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { finalize } from 'rxjs/operators';
+
+import { SnackBarConfig } from 'src/app/configs/snackbar.config';
 import { PostService } from 'src/app/services/post.service';
 import Post from 'src/app/types/post.type';
 
@@ -9,15 +13,18 @@ import Post from 'src/app/types/post.type';
   styleUrls: ['./index.page.scss'],
 })
 export class PostIndexPage implements AfterViewInit {
+  private _postService: PostService;
+  private _snackBarService: MatSnackBar;
+
   private _posts: Array<Post>;
   private _isLoading: boolean;
-  private _postService: PostService;
 
-  constructor(postService: PostService) {
+  constructor(snackBarService: MatSnackBar, postService: PostService) {
+    this._snackBarService = snackBarService;
+    this._postService = postService;
+
     this._posts = new Array();
     this._isLoading = true;
-
-    this._postService = postService;
   }
 
   ngAfterViewInit(): void {
@@ -32,7 +39,26 @@ export class PostIndexPage implements AfterViewInit {
         (response) => {
           this._posts = response?.data ?? this._posts;
         },
-        (error) => {}
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            this._snackBarService.open(
+              'Failed to fetch posts.\n' +
+                (error.error?.message ?? 'Unknown error.'),
+              undefined,
+              {
+                duration: SnackBarConfig.ERROR_DURATIONS,
+              }
+            );
+          } else {
+            this._snackBarService.open(
+              'Failed to fetch posts.\nUnknown error.',
+              undefined,
+              {
+                duration: SnackBarConfig.ERROR_DURATIONS,
+              }
+            );
+          }
+        }
       );
   }
 

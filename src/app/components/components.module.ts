@@ -19,6 +19,7 @@ import { SharedContentMarkdownComponent } from './shared/content-markdown/conten
 import { PostItemComponent } from './post/item/item.component';
 import { PostItemShimmerComponent } from './post/item-shimmer/item-shimmer.component';
 import { PostContentComponent } from './post/content/content.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PostContentComponent } from './post/content/content.component';
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   exports: [
     SharedHeaderComponent,
