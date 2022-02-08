@@ -13,6 +13,7 @@ export default class Post implements ResponseMessage {
   public tags: Array<String> | undefined;
   public author: PostAuthor | undefined;
   public publishedAt: Time | undefined;
+  public commentCount: number | undefined;
 
   public message: string | undefined;
 }

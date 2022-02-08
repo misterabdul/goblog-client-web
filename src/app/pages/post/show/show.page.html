@@ -1,1 +1,13 @@
-<app-component-post-content [post]="post"></app-component-post-content>
+<div class="show-page">
+  <app-component-post-content [post]="post"></app-component-post-content>
+  <app-component-post-comment
+    #comment
+    [isLoadingComment]="isLoadingComment"
+    [postUid]="post?.uid!"
+    [commentCount]="post?.commentCount ?? 0"
+    [comments]="comments"
+    [isCreatingNewComment]="isCreatingNewComment"
+    (ngCommentLoad)="loadComment()"
+    (ngNewCommentCreate)="createNewComment($event)"
+  ></app-component-post-comment>
+</div>

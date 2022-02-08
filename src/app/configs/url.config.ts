@@ -5,4 +5,5 @@ export default class URL {
   public static posts = URL.baseUrl + '/api/v1/posts';
   public static searchPosts = URL.baseUrl + '/api/v1/post/search';
   public static post = URL.baseUrl + '/api/v1/post';
+  public static comment = URL.baseUrl + '/api/v1/comment';
 }

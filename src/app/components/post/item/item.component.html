@@ -20,4 +20,15 @@
       <p class="content-description">{{ post?.description }}</p>
     </div>
   </mat-card-content>
+  <mat-card-footer>
+    <div class="footer-labels">
+      <button mat-button>
+        <mat-icon [inline]="true">share</mat-icon> Share
+      </button>
+      <button mat-button>
+        <mat-icon [inline]="true">comment</mat-icon>
+        {{ post?.commentCount ?? 0 }} Comment(s)
+      </button>
+    </div>
+  </mat-card-footer>
 </mat-card>

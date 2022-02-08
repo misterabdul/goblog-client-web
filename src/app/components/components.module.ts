@@ -8,6 +8,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +21,7 @@ import { SharedContentMarkdownComponent } from './shared/content-markdown/conten
 import { PostItemComponent } from './post/item/item.component';
 import { PostItemShimmerComponent } from './post/item-shimmer/item-shimmer.component';
 import { PostContentComponent } from './post/content/content.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PostCommentComponent } from './post/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PostItemComponent,
     PostItemShimmerComponent,
     PostContentComponent,
+    PostCommentComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatProgressBarModule,
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
@@ -52,6 +56,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PostItemComponent,
     PostItemShimmerComponent,
     PostContentComponent,
+    PostCommentComponent,
   ],
 })
 export class ComponentModule {}
@@ -62,4 +67,5 @@ export {
   PostItemComponent,
   PostItemShimmerComponent,
   PostContentComponent,
+  PostCommentComponent,
 };
