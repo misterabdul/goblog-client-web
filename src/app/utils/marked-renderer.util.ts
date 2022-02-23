@@ -1,4 +1,5 @@
 import { MarkedRenderer } from '@misterabdul/ngx-markdown';
+import { marked } from 'marked';
 
 export class MarkedRendererHelpers {
   private nonWordAndColonTest = /[^\w:]/g;
