@@ -18,13 +18,13 @@ import { MsgPackInterceptor } from './utils/http.util';
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
 })
-class AppComponent {}
+export class AppComponent {}
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     HttpClientModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
