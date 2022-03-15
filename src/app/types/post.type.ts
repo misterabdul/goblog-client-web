@@ -1,8 +1,6 @@
 import { Time } from '@angular/common';
 
-import { ResponseMessage } from './response.type';
-
-export default class Post implements ResponseMessage {
+export default class Post {
   public uid: string | undefined;
   public slug: string | undefined;
   public title: string | undefined;
@@ -14,8 +12,6 @@ export default class Post implements ResponseMessage {
   public author: PostAuthor | undefined;
   public publishedAt: Time | undefined;
   public commentCount: number | undefined;
-
-  public message: string | undefined;
 }
 
 export class PostAuthor {

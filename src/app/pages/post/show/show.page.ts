@@ -60,7 +60,7 @@ export class PostShowPage implements AfterViewInit {
       )
       .subscribe(
         (response) => {
-          this._post = response;
+          this._post = response.data ?? null;
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {

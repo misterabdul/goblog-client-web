@@ -1,7 +1,7 @@
 import { Time } from '@angular/common';
 import { ResponseMessage } from './response.type';
 
-export class Comment implements ResponseMessage {
+export class Comment {
   public uid: string | undefined;
   public postUid: string | undefined;
   public parentCommentUid: string | undefined;
@@ -10,8 +10,6 @@ export class Comment implements ResponseMessage {
   public content: string | undefined;
   public replyCount: number | undefined;
   public createdAt: Time | undefined;
-
-  public message: string | undefined;
 }
 
 export class CommentFormData {
