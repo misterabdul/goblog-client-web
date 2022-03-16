@@ -35,11 +35,11 @@ export class PostIndexPage implements AfterViewInit {
           this._isLoading = false;
         })
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this._posts = response?.data ?? this._posts;
         },
-        (error) => {
+        error: (error) => {
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
               'Failed to fetch posts.\n' +
@@ -58,8 +58,8 @@ export class PostIndexPage implements AfterViewInit {
               }
             );
           }
-        }
-      );
+        },
+      });
   }
 
   get posts(): Array<Post> {

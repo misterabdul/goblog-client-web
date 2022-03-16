@@ -12,8 +12,10 @@ export class DefaultLayout {
   constructor(darkmodeService: DarkModeService) {
     this.isDarkMode = false;
 
-    darkmodeService.darkModeSubject.subscribe((isDarkMode) => {
-      this.isDarkMode = isDarkMode;
+    darkmodeService.darkModeSubject.subscribe({
+      next: (isDarkMode) => {
+        this.isDarkMode = isDarkMode;
+      },
     });
   }
 }

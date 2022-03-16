@@ -47,12 +47,12 @@ export class SearchPage implements AfterViewInit {
           return this._postService.searchPosts(this._searchQuery!);
         })
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this._posts = response?.data ?? this._posts;
           this._isLoading = false;
         },
-        (error) => {
+        error: (error) => {
           this._isLoading = false;
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
@@ -72,8 +72,8 @@ export class SearchPage implements AfterViewInit {
               }
             );
           }
-        }
-      );
+        },
+      });
   }
 
   get posts(): Array<Post> {

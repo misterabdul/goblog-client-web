@@ -20,15 +20,19 @@ export class SharedHeaderComponent {
     router: Router,
     darkModeService: DarkModeService
   ) {
-    route.queryParams.subscribe((params) => {
-      this.searchQuery = params['q'];
+    route.queryParams.subscribe({
+      next: (params) => {
+        this.searchQuery = params['q'];
+      },
     });
 
     this._router = router;
     this._navItems = [new Menu('posts', '/post')];
     this._darkModeService = darkModeService;
-    this._darkModeService.darkModeSubject.subscribe((isDarkMode: boolean) => {
-      this._isDarkMode = isDarkMode;
+    this._darkModeService.darkModeSubject.subscribe({
+      next: (isDarkMode: boolean) => {
+        this._isDarkMode = isDarkMode;
+      },
     });
   }
 

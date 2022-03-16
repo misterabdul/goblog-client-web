@@ -58,11 +58,11 @@ export class PostShowPage implements AfterViewInit {
           return this._postService.getPost(this._postParam!);
         })
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this._post = response.data ?? null;
         },
-        (error) => {
+        error: (error) => {
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
               'Failed to fetch post.\n' +
@@ -81,8 +81,8 @@ export class PostShowPage implements AfterViewInit {
               }
             );
           }
-        }
-      );
+        },
+      });
   }
 
   public loadComment() {
@@ -94,11 +94,11 @@ export class PostShowPage implements AfterViewInit {
           this._isLoadingComment = false;
         })
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this._comments = response.data!;
         },
-        (error) => {
+        error: (error) => {
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
               'Failed to fetch post.\n' +
@@ -117,8 +117,8 @@ export class PostShowPage implements AfterViewInit {
               }
             );
           }
-        }
-      );
+        },
+      });
   }
 
   public createNewComment(formData: CommentFormData) {
@@ -130,12 +130,12 @@ export class PostShowPage implements AfterViewInit {
           this._isCreatingNewComment = false;
         })
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this._comments.push(response.data!);
           this._commentComponent.clearForm();
         },
-        (error) => {
+        error: (error) => {
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
               'Failed to fetch post.\n' +
@@ -154,8 +154,8 @@ export class PostShowPage implements AfterViewInit {
               }
             );
           }
-        }
-      );
+        },
+      });
   }
 
   get post(): Post {
