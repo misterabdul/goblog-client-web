@@ -22,7 +22,7 @@ type HttpOptions = {
   withCredentials?: boolean;
 };
 
-export default class HttpConfig {
+export class HttpConfig {
   public static getDefaultOptions(
     headers: HttpHeaders | null = null
   ): HttpOptions {

@@ -1,7 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { MarkdownService } from '@misterabdul/ngx-markdown';
-import { DarkModeService } from 'src/app/services/darkmode.service';
-import { MarkedRendererHelpers } from 'src/app/utils/marked-renderer.util';
 
 @Component({
   selector: 'app-component-shared-content-markdown',
@@ -9,39 +6,14 @@ import { MarkedRendererHelpers } from 'src/app/utils/marked-renderer.util';
   styleUrls: ['./content-markdown.component.scss'],
 })
 export class SharedContentMarkdownComponent {
-  public isDarkMode: boolean;
   public isSrcMode: boolean;
   private _src: string | undefined;
   private _content: string | undefined;
 
-  constructor(
-    darkModeService: DarkModeService,
-    markdownService: MarkdownService
-  ) {
-    this.isDarkMode = false;
+  constructor() {
     this.isSrcMode = false;
     this._src = undefined;
     this._content = undefined;
-
-    const helpers = new MarkedRendererHelpers();
-    darkModeService.darkModeSubject.subscribe({
-      next: (isDarkMode) => {
-        this.isDarkMode = isDarkMode;
-        markdownService.renderer.link = helpers.linkRenderer(
-          markdownService.renderer,
-          isDarkMode
-        );
-        markdownService.renderer.code = helpers.codeRenderer(
-          markdownService.renderer,
-          isDarkMode
-        );
-        markdownService.renderer.image = helpers.imageRenderer(
-          markdownService.renderer,
-          isDarkMode
-        );
-        markdownService.reload();
-      },
-    });
   }
 
   @Input()

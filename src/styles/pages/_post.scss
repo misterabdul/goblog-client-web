@@ -1,0 +1,47 @@
+@mixin default-content($width) {
+  max-width: $width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin all-component($theme) {
+  $content-max-width: 700px;
+
+  app-page-post-index {
+    .post-content {
+      @include default-content($content-max-width);
+    }
+
+    .no-post {
+      height: 400px;
+      width: 100%;
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  app-page-search {
+    .search-content {
+      @include default-content($content-max-width);
+    }
+
+    .not-found {
+      height: calc(100vh - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      font-weight: 500;
+    }
+  }
+
+  app-page-post-show {
+    div.show-page {
+      @include default-content($content-max-width);
+
+      padding-bottom: 10px;
+    }
+  }
+}

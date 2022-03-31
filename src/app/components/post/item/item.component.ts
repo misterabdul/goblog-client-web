@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import URL from 'src/app/configs/url.config';
-import Post from 'src/app/types/post.type';
+
+import { URL } from 'src/app/configs/url.config';
+import { Post } from 'src/app/types/post.type';
 
 @Component({
   selector: 'app-component-post-item',
@@ -9,18 +10,21 @@ import Post from 'src/app/types/post.type';
   styleUrls: ['./item.component.scss'],
 })
 export class PostItemComponent {
-  private _router: Router;
-  private _post: Post | undefined;
-  private _baseUrl: string = '.';
+  private _routerService: Router;
 
-  constructor(router: Router) {
-    this._router = router;
+  private _post: Post | null;
+  private _baseUrl: string;
+
+  constructor(routerService: Router) {
+    this._routerService = routerService;
+
+    this._post = null;
     this._baseUrl = URL.baseUrl;
   }
 
   public itemClick() {
     if (this._post && this._post.slug)
-      this._router.navigateByUrl('/post/' + this._post.slug);
+      this._routerService.navigateByUrl('/post/' + this._post.slug);
   }
 
   get baseUrl(): string {

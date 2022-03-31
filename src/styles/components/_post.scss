@@ -1,0 +1,328 @@
+@use "sass:map" as map;
+@use "@angular/material" as mat;
+@use "../constants" as constant;
+
+@mixin default-mat-card($border-color) {
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba($color: $border-color, $alpha: 0.5);
+  background-color: unset;
+}
+
+@mixin shimmer-colors($is-dark: false) {
+  @if $is-dark {
+    background-color: #e0e0e0 !important;
+    background-image: linear-gradient(
+      to right,
+      #e0e0e0 0%,
+      #c0c0c0 20%,
+      #e0e0e0 40%,
+      #e0e0e0 100%
+    );
+  } @else {
+    background-color: #404040 !important;
+    background-image: linear-gradient(
+      80deg,
+      #404040 0%,
+      #404040 20%,
+      #505050 40%,
+      #404040 60%,
+      #404040 100%
+    );
+  }
+}
+
+@mixin all-component($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $foreground-palette: map.get($color-config, "foreground");
+  $background-palette: map.get($color-config, "background");
+  $is-dark: map.get($color-config, "is-dark");
+
+  $contrast-color: mat.get-color-from-palette(
+    $primary-palette,
+    "default-contrast"
+  );
+  $txt-color: mat.get-color-from-palette($foreground-palette, "text");
+  $bg-color: mat.get-color-from-palette($background-palette, "background");
+
+  app-component-post-comment {
+    mat-card {
+      @include default-mat-card($contrast-color);
+
+      .content {
+        margin-bottom: 10px;
+      }
+    }
+
+    mat-card-header {
+      display: block;
+    }
+
+    mat-card-title {
+      font-size: 1.75rem !important;
+      padding-bottom: 10px;
+    }
+
+    button.load-comments-btn {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    div.comment-user {
+      margin-bottom: 10px;
+    }
+
+    span.comment-name {
+      font-weight: 500;
+      font-size: medium;
+    }
+
+    span.comment-email {
+      font-size: small;
+    }
+
+    div.comment-content {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    mat-form-field.full-width {
+      width: 100%;
+    }
+
+    button.full-width {
+      width: 100%;
+    }
+
+    mat-progress-bar.hide {
+      visibility: hidden;
+    }
+  }
+
+  app-component-post-content {
+    mat-card {
+      @include default-mat-card($contrast-color);
+
+      margin-bottom: 10px;
+    }
+
+    mat-card-title {
+      font-size: 40px !important;
+    }
+
+    mat-chip {
+      font-size: 0.7rem !important;
+      font-weight: 400 !important;
+      min-height: 25px !important;
+      background-color: unset !important;
+      border-style: solid !important;
+      border-width: 2px !important;
+      margin-right: 4px !important;
+    }
+
+    div.content-tags {
+      margin-top: 7px;
+    }
+
+    div.content-main {
+      margin-top: 30px;
+    }
+  }
+
+  app-component-post-item {
+    mat-card {
+      @include default-mat-card($contrast-color);
+
+      margin-bottom: 10px;
+    }
+
+    mat-card:hover {
+      cursor: pointer;
+    }
+
+    mat-card:hover mat-card-title {
+      text-decoration-line: underline;
+      text-decoration-thickness: 3px;
+    }
+
+    mat-card-title {
+      font-size: 2rem !important;
+    }
+
+    mat-card > img {
+      background-color: $contrast-color;
+      height: 300px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    mat-chip {
+      font-size: 0.7rem;
+      font-weight: 400;
+      min-height: 25px;
+      background-color: unset !important;
+      border-style: solid;
+      border-width: 2px;
+      margin-right: 4px !important;
+    }
+
+    div.content-tags {
+      margin-top: 3px;
+    }
+
+    div.content-main {
+      margin-top: 10px;
+    }
+
+    p.content-description {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    div.footer-labels {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+
+  app-component-post-shimmer {
+    .template {
+      height: 100px;
+      width: 100px;
+    }
+
+    mat-card {
+      color: $txt-color;
+      border-radius: 10px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba($color: $contrast-color, $alpha: 0.5);
+      background-color: unset;
+      margin-bottom: 10px;
+    }
+
+    mat-card-title {
+      height: 30px;
+      width: 250px;
+    }
+
+    .shimmer-header-image {
+      height: 300px;
+    }
+
+    mat-chip {
+      min-height: 25px;
+      width: 60px;
+      margin-right: 4px !important;
+    }
+
+    div.content-tags {
+      margin-top: 3px;
+    }
+
+    div.content-main {
+      margin-top: 10px;
+      height: 20px;
+      width: 100%;
+    }
+
+    .shimmer-loader {
+      @include shimmer-colors($is-dark);
+      animation-duration: 1.5s;
+      background-repeat: no-repeat;
+      background-size: 1000px 1000px;
+      display: inline-block;
+      position: relative;
+      // animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: shimmerAnimation;
+      animation-timing-function: linear;
+      // -webkit-animation-duration: 1s;
+      -webkit-animation-fill-mode: forwards;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-name: shimmerAnimation;
+      -webkit-animation-timing-function: linear;
+    }
+
+    @keyframes shimmerAnimation {
+      0% {
+        background-position: -1000px 0;
+      }
+
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+    @-webkit-keyframes shimmerAnimation {
+      0% {
+        background-position: -1000px 0;
+      }
+
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+  }
+}
+
+@mixin all-component-colors($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $foreground-palette: map.get($color-config, "foreground");
+  $background-palette: map.get($color-config, "background");
+  $is-dark: map.get($color-config, "is-dark");
+
+  $contrast-color: mat.get-color-from-palette(
+    $primary-palette,
+    "default-contrast"
+  );
+  $txt-color: mat.get-color-from-palette($foreground-palette, "text");
+  $bg-color: mat.get-color-from-palette($background-palette, "background");
+
+  app-component-post-comment {
+    mat-card {
+      border-color: rgba($color: $contrast-color, $alpha: 0.5);
+      background-color: unset;
+    }
+  }
+
+  app-component-post-content {
+    mat-card {
+      border-color: rgba($color: $contrast-color, $alpha: 0.5);
+      background-color: unset;
+    }
+
+    mat-chip {
+      background-color: unset !important;
+    }
+  }
+
+  app-component-post-item {
+    mat-card {
+      border-color: rgba($color: $contrast-color, $alpha: 0.5);
+      background-color: unset;
+    }
+
+    mat-card > img {
+      background-color: $contrast-color;
+    }
+
+    mat-chip {
+      background-color: unset !important;
+    }
+  }
+
+  app-component-post-shimmer {
+    mat-card {
+      color: $txt-color;
+      border-color: rgba($color: $contrast-color, $alpha: 0.5);
+    }
+
+    .shimmer-loader {
+      @include shimmer-colors($is-dark);
+    }
+  }
+}

@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import URL from '../configs/url.config';
-import HttpConfig from '../configs/http.config';
-import Response from '../types/response.type';
-import Post from '../types/post.type';
+import { URL } from '../configs/url.config';
+import { HttpConfig } from '../configs/http.config';
+import { Response } from '../types/response.type';
+import { Post } from '../types/post.type';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import Post from 'src/app/types/post.type';
+
+import { Post } from 'src/app/types/post.type';
 
 @Component({
   selector: 'app-component-post-content',
@@ -7,9 +8,11 @@ import Post from 'src/app/types/post.type';
   styleUrls: ['./content.component.scss'],
 })
 export class PostContentComponent {
-  private _post: Post | undefined;
+  private _post: Post | null;
 
-  constructor() {}
+  constructor() {
+    this._post = null;
+  }
 
   @Input()
   set post(post: Post) {

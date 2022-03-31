@@ -1,29 +1,14 @@
-<mat-card [class]="isDarkMode ? 'dark-mode' : ''">
-  <div
-    mat-card-image
-    class="shimmer-header-image"
-    [class]="isDarkMode ? 'shimmer-loader-dark' : 'shimmer-loader'"
-  ></div>
+<mat-card>
+  <div mat-card-image class="shimmer-header-image shimmer-loader"></div>
   <mat-card-header>
-    <mat-card-title
-      [class]="isDarkMode ? 'shimmer-loader-dark' : 'shimmer-loader'"
-    ></mat-card-title>
+    <mat-card-title class="shimmer-loader"></mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div class="content-tags">
-      <mat-chip
-        *ngFor="let item of [].constructor(3)"
-        [class]="isDarkMode ? 'shimmer-loader-dark' : 'shimmer-loader'"
-      >
+      <mat-chip *ngFor="let item of [].constructor(3)" class="shimmer-loader">
       </mat-chip>
     </div>
-    <div
-      class="content-main"
-      [class]="isDarkMode ? 'shimmer-loader-dark' : 'shimmer-loader'"
-    ></div>
-    <div
-      class="content-main"
-      [class]="isDarkMode ? 'shimmer-loader-dark' : 'shimmer-loader'"
-    ></div>
+    <div class="content-main shimmer-loader"></div>
+    <div class="content-main shimmer-loader"></div>
   </mat-card-content>
 </mat-card>

@@ -1,0 +1,10 @@
+@use "./notfound" as notfound;
+@use "./post" as post;
+
+@mixin all-component($theme) {
+  @include notfound.all-component($theme);
+  @include post.all-component($theme);
+}
+
+@mixin all-component-colors($theme) {
+}

@@ -1,0 +1,47 @@
+@use "../constants" as constant;
+
+@mixin all-component($theme) {
+  app-layout-default {
+    app-component-shared-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    mat-sidenav-container {
+      min-height: 100vh;
+    }
+
+    mat-sidenav-container > mat-sidenav-content {
+      margin-top: 72px;
+      margin-left: constant.$content-sides-width;
+      margin-right: constant.$content-sides-width;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (max-width: constant.$small-breakpoint-width) {
+      mat-sidenav-container > mat-sidenav-content {
+        margin-left: constant.$content-sides-width-sm;
+        margin-right: constant.$content-sides-width-sm;
+        overflow-y: visible;
+      }
+    }
+
+    @media (max-width: constant.$extra-small-breakpoint-width) {
+      mat-sidenav-container > mat-sidenav-content {
+        margin-left: 10px;
+        margin-right: 10px;
+        overflow-y: visible;
+      }
+    }
+
+    @media (max-width: 600px) {
+      mat-sidenav-container > mat-sidenav-content {
+        margin-top: 64px;
+      }
+    }
+  }
+}

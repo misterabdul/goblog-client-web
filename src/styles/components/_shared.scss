@@ -1,0 +1,180 @@
+@use "sass:map" as map;
+@use "@angular/material" as mat;
+@use "../constants" as constant;
+@use "../markdowns" as markdown;
+
+@mixin all-component($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $is-dark: map.get($color-config, "is-dark");
+
+  $default-color: mat.get-color-from-palette($primary-palette, "default");
+  $darker-color: mat.get-color-from-palette($primary-palette, "darker");
+  $contrast-color: mat.get-color-from-palette(
+    $primary-palette,
+    "default-contrast"
+  );
+
+  app-component-shared-header {
+    mat-toolbar {
+      @if ($is-dark) {
+        background-color: $darker-color !important;
+      } @else {
+        background-color: $default-color !important;
+      }
+      padding-left: constant.$content-sides-width;
+      padding-right: constant.$content-sides-width;
+    }
+
+    button {
+      text-transform: uppercase;
+    }
+
+    .spacer {
+      flex: 1 1 auto;
+      height: 30px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .search-container {
+      height: 100%;
+      width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .search-form {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    .search-input {
+      display: inline-block;
+      height: 100%;
+      width: calc(100% - 50px);
+      color: $contrast-color;
+      font-size: 0.9rem;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      font-weight: 500;
+      text-shadow: 0;
+      text-align: center;
+      background-color: rgba($color: $contrast-color, $alpha: 0.2);
+      padding: 0 5px;
+      margin: 0;
+      border: 0;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+
+    .search-input::placeholder {
+      color: rgba($color: $contrast-color, $alpha: 0.3);
+    }
+
+    .search-input:focus,
+    .search-input:focus-visible {
+      outline: 0;
+      border: 1px solid $contrast-color;
+    }
+
+    .search-submit {
+      display: inline-block;
+      height: 100%;
+      width: 50px;
+      padding: 2px 20px 0 15px;
+      margin: 0;
+      border: 0;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      vertical-align: top;
+    }
+
+    .material-icons {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    a.nav-item {
+      text-transform: uppercase;
+    }
+
+    @media (max-width: constant.$small-breakpoint-width) {
+      mat-toolbar {
+        padding-left: constant.$content-sides-width-sm;
+        padding-right: constant.$content-sides-width-sm;
+      }
+
+      .search-container {
+        width: unset;
+        flex: 1 1 auto;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    @media (max-width: constant.$extra-small-breakpoint-width) {
+      mat-toolbar {
+        padding-left: unset;
+        padding-right: unset;
+      }
+
+      .btn-home {
+        margin-left: 10px;
+      }
+
+      .btn-menu {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  app-component-shared-content-markdown {
+    @include markdown.component($theme);
+  }
+}
+
+@mixin all-component-colors($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary-palette: map.get($color-config, "primary");
+  $is-dark: map.get($color-config, "is-dark");
+
+  $default-color: mat.get-color-from-palette($primary-palette, "default");
+  $darker-color: mat.get-color-from-palette($primary-palette, "darker");
+  $contrast-color: mat.get-color-from-palette(
+    $primary-palette,
+    "default-contrast"
+  );
+
+  app-component-shared-header {
+    mat-toolbar {
+      @if ($is-dark) {
+        background-color: $darker-color !important;
+      } else {
+        background-color: $default-color !important;
+      }
+    }
+
+    .search-input {
+      color: $contrast-color;
+      background-color: rgba($color: $contrast-color, $alpha: 0.2);
+    }
+
+    .search-input::placeholder {
+      color: rgba($color: $contrast-color, $alpha: 0.3);
+    }
+
+    .search-input:focus,
+    .search-input:focus-visible {
+      outline: 0;
+      border: 1px solid $contrast-color;
+    }
+  }
+
+  app-component-shared-content-markdown {
+    @include markdown.component-colors($theme);
+  }
+}

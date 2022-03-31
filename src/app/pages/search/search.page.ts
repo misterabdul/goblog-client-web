@@ -2,11 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { concatMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
 import { SnackBarConfig } from 'src/app/configs/snackbar.config';
 import { PostService } from 'src/app/services/post.service';
-import Post from 'src/app/types/post.type';
+import { Post } from 'src/app/types/post.type';
 
 @Component({
   selector: 'app-page-search',
@@ -38,7 +38,7 @@ export class SearchPage implements AfterViewInit {
   ngAfterViewInit(): void {
     this._activatedRouteService.queryParams
       .pipe(
-        concatMap((params) => {
+        mergeMap((params) => {
           this._isLoading = true;
           this._posts = new Array();
           if (typeof params['q'] === 'string') this._searchQuery = params['q'];

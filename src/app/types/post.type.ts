@@ -1,6 +1,6 @@
 import { Time } from '@angular/common';
 
-export default class Post {
+export class Post {
   public uid: string | undefined;
   public slug: string | undefined;
   public title: string | undefined;

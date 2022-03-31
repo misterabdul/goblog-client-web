@@ -1,0 +1,12 @@
+@use "./shared" as shared;
+@use "./post" as post;
+
+@mixin all-component($theme) {
+  @include shared.all-component($theme);
+  @include post.all-component($theme);
+}
+
+@mixin all-component-colors($theme) {
+  @include shared.all-component-colors($theme);
+  @include post.all-component-colors($theme);
+}

@@ -2,14 +2,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { concatMap, finalize } from 'rxjs/operators';
+import { mergeMap, finalize } from 'rxjs/operators';
 
 import { PostCommentComponent } from 'src/app/components/components.module';
 import { SnackBarConfig } from 'src/app/configs/snackbar.config';
 import { PostService } from 'src/app/services/post.service';
-import Post from 'src/app/types/post.type';
-import { Comment, CommentFormData } from 'src/app/types/comment.type';
 import { CommentService } from 'src/app/services/comment.service';
+import { Post } from 'src/app/types/post.type';
+import { Comment, CommentFormData } from 'src/app/types/comment.type';
 
 @Component({
   selector: 'app-page-post-show',
@@ -51,11 +51,12 @@ export class PostShowPage implements AfterViewInit {
   ngAfterViewInit(): void {
     this._activatedRouteService.params
       .pipe(
-        concatMap((params) => {
+        mergeMap((params) => {
+          params;
           if (typeof params['id'] === 'string') this._postParam = params['id'];
           else this._postParam = null;
 
-          return this._postService.getPost(this._postParam!);
+          return this._postService.getPost(this._postParam ?? '');
         })
       )
       .subscribe({

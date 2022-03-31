@@ -1,5 +1,4 @@
 import { Time } from '@angular/common';
-import { ResponseMessage } from './response.type';
 
 export class Comment {
   public uid: string | undefined;

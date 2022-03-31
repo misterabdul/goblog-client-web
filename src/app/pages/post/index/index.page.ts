@@ -5,7 +5,7 @@ import { finalize } from 'rxjs/operators';
 
 import { SnackBarConfig } from 'src/app/configs/snackbar.config';
 import { PostService } from 'src/app/services/post.service';
-import Post from 'src/app/types/post.type';
+import { Post } from 'src/app/types/post.type';
 
 @Component({
   selector: 'app-page-post-index',

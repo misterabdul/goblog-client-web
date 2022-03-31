@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DarkModeService } from 'src/app/services/darkmode.service';
 
 @Component({
   selector: 'app-layout-default',
@@ -7,15 +6,5 @@ import { DarkModeService } from 'src/app/services/darkmode.service';
   styleUrls: ['./default.layout.scss'],
 })
 export class DefaultLayout {
-  public isDarkMode: boolean = false;
-
-  constructor(darkmodeService: DarkModeService) {
-    this.isDarkMode = false;
-
-    darkmodeService.darkModeSubject.subscribe({
-      next: (isDarkMode) => {
-        this.isDarkMode = isDarkMode;
-      },
-    });
-  }
+  constructor() {}
 }

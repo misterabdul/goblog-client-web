@@ -1,0 +1,8 @@
+@use "./default" as default;
+
+@mixin all-component($theme) {
+  @include default.all-component($theme);
+}
+
+@mixin all-component-colors($theme) {
+}
