@@ -135,6 +135,16 @@
   app-component-shared-content-markdown {
     @include markdown.component($theme);
   }
+
+  app-component-shared-spinner {
+    .spinner-container {
+      height: 400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 @mixin all-component-colors($theme) {
@@ -153,7 +163,8 @@
     mat-toolbar {
       @if ($is-dark) {
         background-color: $darker-color !important;
-      } else {
+      }
+      else {
         background-color: $default-color !important;
       }
     }

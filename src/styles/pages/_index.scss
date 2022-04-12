@@ -1,8 +1,8 @@
-@use "./notfound" as notfound;
+@use "./custom" as custom;
 @use "./post" as post;
 
 @mixin all-component($theme) {
-  @include notfound.all-component($theme);
+  @include custom.all-component($theme);
   @include post.all-component($theme);
 }
 

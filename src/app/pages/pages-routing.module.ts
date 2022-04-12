@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
-import { NotFoundPage } from './notfound/notfound.page';
+import { CustomPage } from './custom/custom.page';
 
 import { SearchPage } from './search/search.page';
 
@@ -16,7 +16,7 @@ const routes: Routes = [
     path: '**',
     pathMatch: 'full',
     component: DefaultLayout,
-    children: [{ path: '', component: NotFoundPage }],
+    children: [{ path: '', component: CustomPage }],
   },
 ];
 
