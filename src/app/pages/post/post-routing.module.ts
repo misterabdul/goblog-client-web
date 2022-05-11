@@ -4,15 +4,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
 
 import { PostIndexPage } from './index/index.page';
+import { PostIndexResolver } from './index/index.resolver';
 import { PostShowPage } from './show/show.page';
+import { PostShowResolver } from './show/show.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: DefaultLayout,
     children: [
-      { path: '', component: PostIndexPage },
-      { path: ':id', component: PostShowPage },
+      {
+        path: '',
+        component: PostIndexPage,
+        resolve: { posts: PostIndexResolver },
+      },
+      {
+        path: ':uid',
+        component: PostShowPage,
+        resolve: { post: PostShowResolver },
+      },
     ],
   },
 ];

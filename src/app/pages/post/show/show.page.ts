@@ -1,14 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { mergeMap, finalize } from 'rxjs/operators';
+import { finalize } from 'rxjs/operators';
 
 import { PostCommentComponent } from 'src/app/components/components.module';
 import { SnackBarConfig } from 'src/app/configs/snackbar.config';
-import { PostService } from 'src/app/services/post.service';
 import { CommentService } from 'src/app/services/comment.service';
-import { Post } from 'src/app/types/post.type';
 import { Comment, CommentFormData } from 'src/app/types/comment.type';
 
 @Component({
@@ -16,16 +14,15 @@ import { Comment, CommentFormData } from 'src/app/types/comment.type';
   templateUrl: './show.page.html',
   styleUrls: ['./show.page.scss'],
 })
-export class PostShowPage implements AfterViewInit {
+export class PostShowPage implements OnInit {
   private _activatedRouteService: ActivatedRoute;
   private _snackBarService: MatSnackBar;
-  private _postService: PostService;
   private _commentService: CommentService;
 
   @ViewChild('comment')
   private _commentComponent!: PostCommentComponent;
-  private _post: Post | null;
-  private _postParam: string | null;
+
+  private _postUid: string | null;
   private _isLoadingComment: boolean;
   private _isCreatingNewComment: boolean;
   private _comments: Array<Comment>;
@@ -33,63 +30,26 @@ export class PostShowPage implements AfterViewInit {
   constructor(
     activatedRouteService: ActivatedRoute,
     snackBarService: MatSnackBar,
-    postService: PostService,
     commentService: CommentService
   ) {
     this._activatedRouteService = activatedRouteService;
     this._snackBarService = snackBarService;
-    this._postService = postService;
     this._commentService = commentService;
 
-    this._post = null;
-    this._postParam = null;
+    this._postUid = null;
     this._isLoadingComment = false;
     this._isCreatingNewComment = false;
     this._comments = new Array<Comment>();
   }
 
-  ngAfterViewInit(): void {
-    this._activatedRouteService.params
-      .pipe(
-        mergeMap((params) => {
-          params;
-          if (typeof params['id'] === 'string') this._postParam = params['id'];
-          else this._postParam = null;
-
-          return this._postService.getPost(this._postParam ?? '');
-        })
-      )
-      .subscribe({
-        next: (response) => {
-          this._post = response.data ?? null;
-        },
-        error: (error) => {
-          if (error instanceof HttpErrorResponse) {
-            this._snackBarService.open(
-              'Failed to fetch post.\n' +
-                (error.error?.message ?? 'Unknown error.'),
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          } else {
-            this._snackBarService.open(
-              'Failed to fetch post.\nUnknown error.',
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          }
-        },
-      });
+  ngOnInit(): void {
+    this._postUid = this._activatedRouteService.snapshot.params['uid'] ?? null;
   }
 
   public loadComment() {
     this._isLoadingComment = true;
     this._commentService
-      .getPostComments(this._post!.uid!)
+      .getPostComments(this._postUid ?? '')
       .pipe(
         finalize(() => {
           this._isLoadingComment = false;
@@ -102,7 +62,7 @@ export class PostShowPage implements AfterViewInit {
         error: (error) => {
           if (error instanceof HttpErrorResponse) {
             this._snackBarService.open(
-              'Failed to fetch post.\n' +
+              'Failed to fetch comments.\n' +
                 (error.error?.message ?? 'Unknown error.'),
               undefined,
               {
@@ -111,7 +71,7 @@ export class PostShowPage implements AfterViewInit {
             );
           } else {
             this._snackBarService.open(
-              'Failed to fetch post.\nUnknown error.',
+              'Failed to fetch comments.\nUnknown error.',
               undefined,
               {
                 duration: SnackBarConfig.ERROR_DURATIONS,
@@ -157,10 +117,6 @@ export class PostShowPage implements AfterViewInit {
           }
         },
       });
-  }
-
-  get post(): Post {
-    return this._post!;
   }
 
   get isLoadingComment(): boolean {

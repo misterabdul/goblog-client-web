@@ -3,12 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
 import { SearchPage } from './search/search.page';
+import { SearchResolver } from './search/search.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: DefaultLayout,
-    children: [{ path: '', component: SearchPage }],
+    children: [
+      {
+        path: '',
+        component: SearchPage,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+        resolve: { posts: SearchResolver },
+      },
+    ],
   },
 ];
 

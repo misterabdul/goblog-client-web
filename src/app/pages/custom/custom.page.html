@@ -1,13 +1,8 @@
-<div *ngIf="!isLoading; else loadingBar">
-  <div *ngIf="page !== null; else notFound">
-    <app-component-page-content [page]="page"></app-component-page-content>
-  </div>
-  <ng-template #notFound>
-    <div class="notfound-content">
-      <div class="notfound">Page Not Found</div>
-    </div>
-  </ng-template>
+<div *ngIf="page; else notFound">
+  <app-component-page-content></app-component-page-content>
 </div>
-<ng-template #loadingBar>
-  <app-component-shared-spinner></app-component-shared-spinner>
+<ng-template #notFound>
+  <div class="notfound-content">
+    <div class="notfound">Page Not Found</div>
+  </div>
 </ng-template>

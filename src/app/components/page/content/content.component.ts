@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Page } from 'src/app/types/page.type';
 
@@ -7,16 +8,19 @@ import { Page } from 'src/app/types/page.type';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
 })
-export class PageContentComponent {
+export class PageContentComponent implements OnInit {
+  private _activatedRouteService: ActivatedRoute;
+
   private _page: Page | null;
 
-  constructor() {
+  constructor(activatedRouteService: ActivatedRoute) {
+    this._activatedRouteService = activatedRouteService;
+
     this._page = null;
   }
 
-  @Input()
-  set page(page: Page | null) {
-    this._page = page;
+  ngOnInit(): void {
+    this._page = this._activatedRouteService.snapshot.data.page;
   }
 
   get page(): Page | null {

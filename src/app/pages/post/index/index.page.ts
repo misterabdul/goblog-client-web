@@ -1,10 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { finalize } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { SnackBarConfig } from 'src/app/configs/snackbar.config';
-import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/types/post.type';
 
 @Component({
@@ -12,61 +8,22 @@ import { Post } from 'src/app/types/post.type';
   templateUrl: './index.page.html',
   styleUrls: ['./index.page.scss'],
 })
-export class PostIndexPage implements AfterViewInit {
-  private _postService: PostService;
-  private _snackBarService: MatSnackBar;
+export class PostIndexPage implements OnInit {
+  private _activatedRouteService: ActivatedRoute;
 
-  private _posts: Array<Post>;
-  private _isLoading: boolean;
+  private _posts: Array<Post> | null;
 
-  constructor(snackBarService: MatSnackBar, postService: PostService) {
-    this._snackBarService = snackBarService;
-    this._postService = postService;
+  constructor(activatedRouteService: ActivatedRoute) {
+    this._activatedRouteService = activatedRouteService;
 
     this._posts = new Array();
-    this._isLoading = true;
   }
 
-  ngAfterViewInit(): void {
-    this._postService
-      .getPosts()
-      .pipe(
-        finalize(() => {
-          this._isLoading = false;
-        })
-      )
-      .subscribe({
-        next: (response) => {
-          this._posts = response?.data ?? this._posts;
-        },
-        error: (error) => {
-          if (error instanceof HttpErrorResponse) {
-            this._snackBarService.open(
-              'Failed to fetch posts.\n' +
-                (error.error?.message ?? 'Unknown error.'),
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          } else {
-            this._snackBarService.open(
-              'Failed to fetch posts.\nUnknown error.',
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          }
-        },
-      });
+  ngOnInit(): void {
+    this._posts = this._activatedRouteService.snapshot.data.posts;
   }
 
-  get posts(): Array<Post> {
+  get posts(): Array<Post> | null {
     return this._posts;
-  }
-
-  get isLoading(): boolean {
-    return this._isLoading;
   }
 }

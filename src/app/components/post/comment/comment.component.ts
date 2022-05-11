@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { Comment, CommentFormData } from 'src/app/types/comment.type';
+import { Post } from 'src/app/types/post.type';
 import { ValidatorUtils } from 'src/app/utils/validator.util';
 
 @Component({
@@ -9,10 +11,11 @@ import { ValidatorUtils } from 'src/app/utils/validator.util';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
 })
-export class PostCommentComponent {
+export class PostCommentComponent implements OnInit {
+  private _activatedRouteService: ActivatedRoute;
+
   private _isLoadingComment: boolean;
-  private _postUid: string | null;
-  private _commentCount: number;
+  private _post: Post | null;
   private _comments: Array<Comment>;
   private _isCreatingNewComment: boolean;
   private _formModel: FormModel;
@@ -23,10 +26,11 @@ export class PostCommentComponent {
   @Output()
   public ngNewCommentCreate: EventEmitter<CommentFormData>;
 
-  constructor() {
+  constructor(activatedRouteService: ActivatedRoute) {
+    this._activatedRouteService = activatedRouteService;
+
     this._isLoadingComment = false;
-    this._postUid = null;
-    this._commentCount = 0;
+    this._post = null;
     this._comments = new Array<Comment>();
     this._isCreatingNewComment = false;
     this._formModel = new FormModel();
@@ -35,12 +39,18 @@ export class PostCommentComponent {
     this.ngNewCommentCreate = new EventEmitter<CommentFormData>();
   }
 
+  ngOnInit(): void {
+    this._post = this._activatedRouteService.snapshot.data.post;
+  }
+
   public loadComment() {
     this.ngCommentLoad.emit();
   }
 
   public createNewComment() {
-    this.ngNewCommentCreate.emit(this._formModel.getFormData(this._postUid!));
+    this.ngNewCommentCreate.emit(
+      this._formModel.getFormData(this._post?.uid ?? '')
+    );
   }
 
   public clearForm() {
@@ -56,22 +66,12 @@ export class PostCommentComponent {
     return this._isLoadingComment;
   }
 
-  @Input()
-  set postUid(postUid: string) {
-    this._postUid = postUid;
-  }
-
-  get postUid(): string {
-    return this._postUid!;
-  }
-
-  @Input()
-  set commentCount(commentCount: number) {
-    this._commentCount = commentCount;
+  get post(): Post | null {
+    return this._post;
   }
 
   get commentCount(): number {
-    return this._commentCount;
+    return this._post?.commentCount ?? 0;
   }
 
   @Input()

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
 import { CustomPage } from './custom/custom.page';
+import { CustomPageResolver } from './custom/custom.resolver';
 
 const routes: Routes = [
   {
@@ -18,7 +19,13 @@ const routes: Routes = [
     path: '**',
     pathMatch: 'full',
     component: DefaultLayout,
-    children: [{ path: '', component: CustomPage }],
+    children: [
+      {
+        path: '',
+        component: CustomPage,
+        resolve: { page: CustomPageResolver },
+      },
+    ],
   },
 ];
 

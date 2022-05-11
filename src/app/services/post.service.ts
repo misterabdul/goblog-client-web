@@ -13,7 +13,10 @@ import { Post } from '../types/post.type';
 export class PostService {
   constructor(private _http: HttpClient) {}
 
-  public getPosts(): Observable<Response<Array<Post>>> {
+  public getPosts(
+    show?: number,
+    page?: number
+  ): Observable<Response<Array<Post>>> {
     return this._http.get<Response<Array<Post>>>(
       URL.posts,
       HttpConfig.getDefaultOptions()

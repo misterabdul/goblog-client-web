@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Post } from 'src/app/types/post.type';
 
@@ -7,17 +8,21 @@ import { Post } from 'src/app/types/post.type';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
 })
-export class PostContentComponent {
+export class PostContentComponent implements OnInit {
+  private _activatedRouteService: ActivatedRoute;
+
   private _post: Post | null;
 
-  constructor() {
+  constructor(activatedRouteService: ActivatedRoute) {
+    this._activatedRouteService = activatedRouteService;
+
     this._post = null;
   }
 
-  @Input()
-  set post(post: Post) {
-    this._post = post;
+  ngOnInit(): void {
+    this._post = this._activatedRouteService.snapshot.data.post;
   }
+
   get post(): Post {
     return this._post!;
   }

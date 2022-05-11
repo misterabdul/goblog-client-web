@@ -1,14 +1,13 @@
 <div class="post-content">
-  <ng-container *ngIf="!isLoading; else shimmer">
+  <ng-container *ngIf="posts; else noPost">
     <app-component-post-item
       *ngFor="let post of posts"
       [post]="post"
     ></app-component-post-item>
-    <div class="no-post" *ngIf="posts.length === 0">
+  </ng-container>
+  <ng-template #noPost>
+    <div class="no-post">
       <p>There is no post.</p>
     </div>
-  </ng-container>
-  <ng-template #shimmer>
-    <app-component-post-item-shimmer></app-component-post-item-shimmer>
   </ng-template>
 </div>

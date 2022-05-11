@@ -1,11 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { mergeMap } from 'rxjs/operators';
 
-import { SnackBarConfig } from 'src/app/configs/snackbar.config';
-import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/types/post.type';
 
 @Component({
@@ -13,78 +8,28 @@ import { Post } from 'src/app/types/post.type';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements AfterViewInit {
+export class SearchPage implements OnInit {
   private _activatedRouteService: ActivatedRoute;
-  private _snackBarService: MatSnackBar;
-  private _postService: PostService;
-  private _posts: Array<Post>;
-  private _searchQuery: string | null;
-  private _isLoading: boolean;
 
-  constructor(
-    activatedRoute: ActivatedRoute,
-    snackBarService: MatSnackBar,
-    postService: PostService
-  ) {
+  private _posts: Array<Post> | null;
+
+  constructor(activatedRoute: ActivatedRoute) {
     this._activatedRouteService = activatedRoute;
-    this._snackBarService = snackBarService;
-    this._postService = postService;
 
-    this._posts = new Array();
-    this._searchQuery = null;
-    this._isLoading = true;
+    this._posts = null;
   }
 
-  ngAfterViewInit(): void {
-    this._activatedRouteService.queryParams
-      .pipe(
-        mergeMap((params) => {
-          this._isLoading = true;
-          this._posts = new Array();
-          if (typeof params['q'] === 'string') this._searchQuery = params['q'];
-          else this._searchQuery = null;
+  ngOnInit(): void {
+    this._posts = this._activatedRouteService.snapshot.data.posts;
 
-          return this._postService.searchPosts(this._searchQuery!);
-        })
-      )
-      .subscribe({
-        next: (response) => {
-          this._posts = response?.data ?? this._posts;
-          this._isLoading = false;
-        },
-        error: (error) => {
-          this._isLoading = false;
-          if (error instanceof HttpErrorResponse) {
-            this._snackBarService.open(
-              'Failed to fetch posts.\n' +
-                (error.error?.message ?? 'Unknown error.'),
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          } else {
-            this._snackBarService.open(
-              'Failed to fetch posts.\nUnknown error.',
-              undefined,
-              {
-                duration: SnackBarConfig.ERROR_DURATIONS,
-              }
-            );
-          }
-        },
-      });
+    this._activatedRouteService.data.subscribe({
+      next: (data) => {
+        this._posts = data.posts;
+      },
+    });
   }
 
-  get posts(): Array<Post> {
+  get posts(): Array<Post> | null {
     return this._posts;
-  }
-
-  get isLoading(): boolean {
-    return this._isLoading;
-  }
-
-  get searchQuery(): string {
-    return this._searchQuery!;
   }
 }
