@@ -2,18 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
-
-import { PostIndexPage } from './index/index.page';
-import { PostShowPage } from './show/show.page';
+import { SearchPage } from './search/search.page';
 
 const routes: Routes = [
   {
     path: '',
     component: DefaultLayout,
-    children: [
-      { path: '', component: PostIndexPage },
-      { path: ':id', component: PostShowPage },
-    ],
+    children: [{ path: '', component: SearchPage }],
   },
 ];
 
@@ -21,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PostRoutingModule {}
+export class SearchRoutingModule {}

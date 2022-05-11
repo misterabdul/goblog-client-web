@@ -4,13 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayout } from 'src/app/layouts/layouts.module';
 import { CustomPage } from './custom/custom.page';
 
-import { SearchPage } from './search/search.page';
-
 const routes: Routes = [
   {
+    path: 'post',
+    loadChildren: () => import('./post/post.module').then((m) => m.PostModule),
+  },
+  {
     path: 'search',
-    component: DefaultLayout,
-    children: [{ path: '', component: SearchPage }],
+    loadChildren: () =>
+      import('./search/search.module').then((m) => m.SearchModule),
   },
   {
     path: '**',
