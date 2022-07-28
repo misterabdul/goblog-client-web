@@ -1,4 +1,4 @@
-import { MarkedOptions, MarkedRenderer } from '@misterabdul/ngx-markdown';
+import { MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { marked } from 'marked';
 
 import { MarkedRendererHelpers } from '../utils/marked-renderer.util';

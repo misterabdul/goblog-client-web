@@ -7,7 +7,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MarkdownModule, MarkedOptions } from '@misterabdul/ngx-markdown';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MarkedConfig } from './configs/marked.config';
